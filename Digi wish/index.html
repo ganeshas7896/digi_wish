@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digi Wish — Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       TOP BAR: Logo + Dark/Light mode toggle
+       Recommendation: keep this same top bar markup on every page
+       (index.html, signup.html, dashboard.php) so the theme toggle
+       and branding stay consistent across the whole site.
+  ============================================================= -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">✦</span>
+      <span class="brand-text">Digi<span class="brand-accent">Wish</span></span>
+    </div>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark and light mode">
+      <span class="theme-toggle-icon">🌙</span>
+      <span class="theme-toggle-label">Dark mode</span>
+    </button>
+  </header>
+
+  <!-- ============================================================
+       LOGIN CARD
+      Recommendation: this form POSTs to login.php which
+       checks the username/gmail + password against the
+       `users` table in MySQL, then starts a PHP session and
+       redirects to dashboard.php on success.
+  ============================================================= -->
+  <main class="auth-wrap">
+    <section class="auth-card">
+      <div class="auth-card-header">
+        <h1>Welcome back</h1>
+        <p>Log in to start creating a wish that feels personal.</p>
+      </div>
+
+      <!-- Message box for login errors coming back from PHP,
+           e.g. login.php?error=invalid -->
+      <div id="loginMessage" class="form-message" hidden></div>
+
+      <form id="loginForm" action="login.php" method="POST" novalidate>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="e.g. magilan_23" required autocomplete="username">
+
+        <label for="gmail">Gmail address</label>
+        <input type="email" id="gmail" name="gmail" placeholder="e.g. magilan@gmail.com" required autocomplete="email">
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+
+        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+      </form>
+
+      <div class="divider"><span>or</span></div>
+
+      <!-- Recommendation: a real "Sign in with Google" button needs
+           Google OAuth (Google Identity Services). This button is a
+           placeholder you can wire up later — see README.md
+           "Optional: Google Sign-In" section. -->
+      <button type="button" class="btn btn-google btn-block" id="googleBtn">
+        <span class="google-g">G</span> Continue with Google
+      </button>
+
+      <p class="auth-switch">
+        New to Digi Wish? <a href="signup.html">Create an account</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Digi Wish. Handcrafted wishes, delivered on time.</p>
+  </footer>
+
+  <script src="theme.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
